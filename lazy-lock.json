@@ -41,9 +41,11 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tokyonight": { "branch": "main", "commit": "c2725eb6d086c8c9624456d734bd365194660017" },
+  "twilight.nvim": { "branch": "main", "commit": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b" },
   "vim-bbye": { "branch": "master", "commit": "25ef93ac5a87526111f43e5110675032dbcacf56" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
   "vscode-js-debug": { "branch": "main", "commit": "c57467fb349a2b99073424035b3785d8381357aa" },
   "which-key.nvim": { "branch": "main", "commit": "68e37e12913a66b60073906f5d3f14dee0de19f2" },
-  "yazi.nvim": { "branch": "main", "commit": "faa03e9acb894533b91c811d0dafd816b995088f" }
+  "yazi.nvim": { "branch": "main", "commit": "faa03e9acb894533b91c811d0dafd816b995088f" },
+  "zen-mode.nvim": { "branch": "main", "commit": "29b292bdc58b76a6c8f294c961a8bf92c5a6ebd6" }
 }

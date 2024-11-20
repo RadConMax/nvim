@@ -7,7 +7,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- UI
-vim.g.have_nerd_font = true 
+vim.g.have_nerd_font = true
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -28,7 +28,7 @@ vim.opt.scrolloff = 10
 vim.opt.incsearch = true
 
 -- Folding
-vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
