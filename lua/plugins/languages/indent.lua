@@ -4,6 +4,11 @@ return {
     config = function()
         local indent_blankline = require('ibl')
 
-        indent_blankline.setup()
+        indent_blankline.setup({
+            scope = {
+                show_start = false,
+                show_end = false,
+            },
+        })
     end,
 }

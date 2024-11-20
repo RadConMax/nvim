@@ -8,6 +8,7 @@ return {
         which_key.add({
             hidden = true,
             { '<leader>gg', ':LazyGit<cr>', desc = 'LazyGit' },
+            { '<leader>GG', ':LazyGitCurrentFile<cr>', desc = 'LazyGitCurrentFile' },
         })
     end,
 }
