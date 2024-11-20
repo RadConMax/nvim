@@ -26,6 +26,7 @@ return {
                 'lua_ls',
                 'marksman',
                 'sqlls',
+                'tailwindcss',
                 'ts_ls',
                 'yamlls',
             },
