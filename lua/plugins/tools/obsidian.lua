@@ -4,12 +4,14 @@ return {
     version = '*',
     lazy = false,
     config = function()
-        -- vim.g.vim_markdown_frontmatter = 1
-
         local obsidian = require('obsidian')
         local which_key = require('which-key')
+        local obsidian_vault_path = os.getenv('OBSIDIAN_VAULT_PATH')
 
         obsidian.setup({
+            ui = {
+                enableL = false,
+            },
             workspaces = {
                 {
                     name = 'current',
@@ -17,7 +19,7 @@ return {
                         return assert(vim.fn.getcwd())
                     end,
                     overrides = {
-                        notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
+                        notes_subdir = vim.NIL,
                         new_notes_location = 'current_dir',
                         templates = {
                             subdir = vim.NIL,
@@ -26,13 +28,17 @@ return {
                     },
                 },
                 {
-                    name = 'local',
-                    path = '~/.obsidian',
+                    name = 'global',
+                    path = '~/.notes',
+                },
+                {
+                    name = 'obsidian',
+                    path = (obsidian_vault_path == nil and '~/.notes') or obsidian_vault_path,
                 },
             },
-            notes_subdir = 'notes',
+            notes_subdir = '.notes',
             daily_notes = {
-                folder = 'notes/dailies',
+                folder = '.notes/dailies',
             },
             completion = {
                 nvim_cmp = true,
@@ -76,7 +82,7 @@ return {
         })
 
         which_key.add({
-            { '<leader>o', desc = 'Obsidian', icon = '' },
+            { '<leader>o', desc = 'Obsidian', icon = '' },
             { '<leader>o30', ':ObsidianDailies -30 0<cr>', desc = 'Last 30 days notes' },
             { '<leader>o7', ':ObsidianDailies -7 0<cr>', desc = 'Last 7 days notes' },
             { '<leader>ob', ':ObsidianBackLinks<cr>', desc = 'Back links' },
@@ -88,10 +94,10 @@ return {
             {
                 '<leader>oo',
                 function()
-                    vim.cmd('ObsidianWorkspace local')
+                    vim.cmd('ObsidianWorkspace obsidian')
                     vim.cmd('ObsidianQuickSwitch')
                 end,
-                desc = 'Obsidian',
+                desc = 'Obsidian Markdown Files',
             },
             { '<leader>oO', ':ObsidianOpen ', desc = 'Open in app' },
             { '<leader>or', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
@@ -102,31 +108,35 @@ return {
             {
                 { '<leader>ow', desc = 'Switch workspace' },
                 { '<leader>owc', ':ObsidianWorkspace current<cr>', desc = 'Current' },
-                { '<leader>owl', ':ObsidianWorkspace local<cr>', desc = 'Local' },
-                { '<leader>oww', ':ObsidianWorkspace waterkhair<cr>', desc = 'WaterKhair' },
+                { '<leader>owg', ':ObsidianWorkspace global<cr>', desc = 'Global' },
+                { '<leader>owl', ':ObsidianWorkspace obsidian<cr>', desc = 'Vault' },
             },
         })
         which_key.add({
-            mode = 'v',
-            { '<leader>o', desc = 'Obsidian', icon = '' },
-            { '<leader>oe', ':ObsidianExtractNote ', desc = 'Extract selected text to new note' },
-            { '<leader>ol', ':ObsidianLink<cr>', desc = 'Link selected text' },
-            { '<leader>on', ':ObsidianLinkNew ', desc = 'Link selected text to new note' },
-        })
-        which_key.add({
-            { '<c-x>', ':ObsidianToggleCheckbox<cr>', desc = 'Toggle checkbox' },
-        })
-        which_key.add({
-            hidden = true,
+            { '<leader>m', desc = 'Markdown', icon = '' },
             {
                 '<leader>mm',
                 function()
                     vim.cmd('ObsidianWorkspace current')
                     vim.cmd('ObsidianQuickSwitch')
                 end,
-                desc = 'Markdown',
-                icon = '',
+                desc = 'Current Markdown Files',
             },
+            {
+                '<leader>mg',
+                function()
+                    vim.cmd('ObsidianWorkspace global')
+                    vim.cmd('ObsidianQuickSwitch')
+                end,
+                desc = 'Global Markdown Files',
+            },
+        })
+        which_key.add({
+            mode = 'v',
+            { '<leader>o', desc = 'Obsidian', icon = '' },
+            { '<leader>oe', ':ObsidianExtractNote ', desc = 'Extract selected text to new note' },
+            { '<leader>ol', ':ObsidianLink<cr>', desc = 'Link selected text' },
+            { '<leader>on', ':ObsidianLinkNew ', desc = 'Link selected text to new note' },
         })
     end,
 }
