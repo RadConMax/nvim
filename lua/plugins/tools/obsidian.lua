@@ -7,10 +7,14 @@ return {
         local obsidian = require('obsidian')
         local which_key = require('which-key')
         local obsidian_vault_path = os.getenv('OBSIDIAN_VAULT_PATH')
+        local obsidian_images_path = os.getenv('OBSIDIAN_IMAGES_PATH')
 
         obsidian.setup({
+            attachments = {
+                img_folder = obsidian_images_path,
+            },
             ui = {
-                enableL = false,
+                enable = false,
             },
             workspaces = {
                 {
@@ -102,18 +106,25 @@ return {
                 icon = '',
             },
             { '<leader>o', desc = 'Obsidian', icon = '' },
-            { '<leader>ob', ':ObsidianBackLinks<cr>', desc = 'Back links' },
             {
                 { '<leader>od', desc = 'Dailies' },
-                { '<leader>odd', ':ObsidianDailies<cr>', desc = 'All' },
-                { '<leader>odm', ':ObsidianDailies -30 0<cr>', desc = 'Last month' },
-                { '<leader>ods', ':ObsidianDailies -180 0<cr>', desc = 'Last six months' },
-                { '<leader>odw', ':ObsidianDailies -7 0<cr>', desc = 'Last week' },
-                { '<leader>ody', ':ObsidianDailies -365 0<cr>', desc = 'Last year' },
+                {
+                    { '<leader>odo', desc = 'Open daily notes' },
+                    { '<leader>odo', ':ObsidianDailies<cr>', desc = 'All' },
+                    { '<leader>odom', ':ObsidianDailies -30 0<cr>', desc = 'Last month' },
+                    { '<leader>odos', ':ObsidianDailies -180 0<cr>', desc = 'Last six months' },
+                    { '<leader>odow', ':ObsidianDailies -7 0<cr>', desc = 'Last week' },
+                    { '<leader>odoy', ':ObsidianDailies -365 0<cr>', desc = 'Last year' },
+                },
+                {
+                    { '<leader>odn', desc = 'New daily note' },
+                    { '<leader>odnn', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
+                    { '<leader>odnt', ':ObsidianToday<cr>', desc = 'Today\'s note' },
+                    { '<leader>odny', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
+                },
             },
             { '<leader>of', ':ObsidianFollowLink<cr>', desc = 'Follow link' },
-            { '<leader>oi', ':ObsidianPasteImg ', desc = 'Paste image from clipboard' },
-            { '<leader>ol', ':ObsidianLinks<cr>', desc = 'Show links' },
+            { '<leader>oi', ':ObsidianPasteImg<cr>', desc = 'Image' },
             { '<leader>on', ':ObsidianNew ', desc = 'New' },
             {
                 '<leader>oo',
@@ -124,13 +135,21 @@ return {
                 desc = 'Obsidian Markdown Files',
                 icon = '',
             },
-            { '<leader>oO', ':ObsidianOpen ', desc = 'Open in app' },
-            { '<leader>os', ':ObsidianSearch ', desc = 'Search' },
+            { '<leader>OO', ':ObsidianOpen ', desc = 'Open in app' },
+            { '<leader>op', ':MarkdownPreviewToggle<cr>', desc = 'Toggle preview' },
+            { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
             {
-                { '<leader>ot', desc = 'Take daily note' },
-                { '<leader>ott', ':ObsidianToday<cr>', desc = 'Today\'s note' },
-                { '<leader>otw', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
-                { '<leader>oty', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
+                { '<leader>os', desc = 'Search' },
+                { '<leader>osb', ':ObsidianBacklinks <cr>', desc = 'Back links' },
+                { '<leader>osc', ':ObsidianTOC<cr>', desc = 'Table of contents' },
+                { '<leader>osl', ':ObsidianLinks<cr>', desc = 'Links' },
+                { '<leader>ost', ':ObsidianTags ', desc = 'Tags' },
+                { '<leader>osw', ':ObsidianSearch ', desc = 'Word' },
+            },
+            {
+                { '<leader>ot', desc = 'Templates' },
+                { '<leader>otf', ':ObsidianNewFromTemplate ', desc = 'From Template' },
+                { '<leader>oti', ':ObsidianTemplate ', desc = 'Insert' },
             },
             {
                 { '<leader>ow', desc = 'Workspaces' },

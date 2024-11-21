@@ -17,6 +17,7 @@ return {
         vim.g.mkdp_auto_close = 0
         vim.g.mkdp_combine_preview = 1
         vim.g.mkdp_refresh_slow = 1
+        vim.g.mkdp_images_path = os.getenv('MARKDOWN_IMAGES_PATH')
 
         local render_markdown = require('render-markdown')
         local which_key = require('which-key')
