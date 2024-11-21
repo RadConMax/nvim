@@ -46,8 +46,7 @@ return {
                     { '<leader>gR', gs.reset_buffer, desc = 'Reset buffer' },
                     { '<leader>gp', gs.preview_hunk, desc = 'Preview hunk' },
                     { '<leader>gb', function() gs.blame_line { full = true } end, desc = 'Blame line' },
-                    { '<leader>gd', gs.diffthis, desc = 'Diff this' },
-                    { '<leader>gD', function() gs.diffthis('~') end, desc = 'Diff ~' },
+                    { '<leader>gd', function() gs.diffthis('~') end, desc = 'Diff this' },
                     { '<leader>gt', gs.toggle_current_line_blame, desc = 'Toggle current line blame' },
                     { '<leader>gT', gs.toggle_deleted, desc = 'Toggle deleted' },
                 })

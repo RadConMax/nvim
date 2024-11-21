@@ -17,12 +17,15 @@ return {
             },
         }, -- Snippet engine
         { 'onsails/lspkind.nvim' }, -- Adds vscode-like pictograms to neovim built-in lsp
+        { 'folke/lazydev.nvim', ft = 'lua' },
     },
     config = function()
         local cmp = require('cmp')
         local luasnip = require('luasnip')
         local luasnip_loaders_from_vscode = require('luasnip.loaders.from_vscode')
         local lspkind = require('lspkind')
+        local lazydev = require('lazydev')
+        local which_key = require('which-key')
 
         luasnip.config.set_config({
             history = false,
@@ -31,6 +34,12 @@ return {
         luasnip.filetype_extend('typescript', { 'tsdoc' })
         luasnip.filetype_extend('javascript', { 'jsdoc' })
         luasnip_loaders_from_vscode.lazy_load()
+        lazydev.setup({
+            library = {
+                'lazy.nvim',
+                'LazyVim',
+            },
+        })
 
         cmp.setup({
             snippet = {
@@ -74,6 +83,7 @@ return {
                 end, { 'i', 's', }),
             }),
             sources = cmp.config.sources({
+                { name = 'lazydev', priority = 100, group_index = 0 },
                 { name = 'luasnip', priority = 40 },
                 { name = 'nvim_lsp', priority = 35 },
                 { name = 'nvim_lua', priority = 30 },
@@ -88,6 +98,10 @@ return {
                 fields = {'abbr', 'kind', 'menu'},
                 format = lspkind.cmp_format({ --[[mode = 'symbol', maxwidth = 50, ellipsis_char = '...'--]] })
             },
+        })
+
+        which_key.add({
+            { '<leader>lv', ':LazyDev lsp<cr>', desc = 'LazyDev', icon = '' },
         })
     end
 }
