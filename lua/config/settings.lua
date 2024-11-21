@@ -35,6 +35,8 @@ vim.o.foldenable = true
 vim.opt.conceallevel = 2
 
 -- General settings
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)

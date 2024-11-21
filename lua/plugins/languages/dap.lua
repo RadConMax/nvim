@@ -39,7 +39,8 @@ return {
 
         which_key.add({
             { '<leader>d', desc = 'DAP', icon = '' },
-            { '<leader>db', function() dap.toggle_breakpoint() end, desc = 'Breakpoint', icon = '' },
+            { '<leader>da', function() dap.clear_breakpoints() end, desc = 'Clear All Breakpoints', icon = '' },
+            { '<leader>db', function() dap.toggle_breakpoint() end, desc = 'Toggle Breakpoint', icon = '' },
             { '<leader>dc', function() dap.continue() end, desc = 'Continue', icon = '' },
             { '<leader>dd', function() dapui.toggle() end, desc = 'DAP UI', icon = '' },
             { '<leader>dh', function() dap.set_breakpoint(nil, vim.fn.input('Hits: '), nil) end, desc = 'Hits Breakpoint', icon = '󰰂' },
