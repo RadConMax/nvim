@@ -15,6 +15,9 @@ return {
         local commands = { noice.api.status.command.get, cond = noice.api.status.command.has }
         local search = { noice.api.status.search.get, cond = noice.api.status.search.has }
 
+        -- Make bg transparent
+        theme.normal.c.bg = 'none'
+
         lualine.setup({
             options = {
                 theme = theme,
