@@ -82,11 +82,35 @@ return {
         })
 
         which_key.add({
+            { '<leader>m', desc = 'Markdown', icon = '' },
+            {
+                '<leader>mm',
+                function()
+                    vim.cmd('ObsidianWorkspace current')
+                    vim.cmd('ObsidianQuickSwitch')
+                end,
+                desc = 'Current Markdown Files',
+                icon = '',
+            },
+            {
+                '<leader>mg',
+                function()
+                    vim.cmd('ObsidianWorkspace global')
+                    vim.cmd('ObsidianQuickSwitch')
+                end,
+                desc = 'Global Markdown Files',
+                icon = '',
+            },
             { '<leader>o', desc = 'Obsidian', icon = '' },
-            { '<leader>o30', ':ObsidianDailies -30 0<cr>', desc = 'Last 30 days notes' },
-            { '<leader>o7', ':ObsidianDailies -7 0<cr>', desc = 'Last 7 days notes' },
             { '<leader>ob', ':ObsidianBackLinks<cr>', desc = 'Back links' },
-            { '<leader>od', ':ObsidianDailies <cr>', desc = 'Dailies notes' },
+            {
+                { '<leader>od', desc = 'Dailies' },
+                { '<leader>odd', ':ObsidianDailies<cr>', desc = 'All' },
+                { '<leader>odm', ':ObsidianDailies -30 0<cr>', desc = 'Last month' },
+                { '<leader>ods', ':ObsidianDailies -180 0<cr>', desc = 'Last six months' },
+                { '<leader>odw', ':ObsidianDailies -7 0<cr>', desc = 'Last week' },
+                { '<leader>ody', ':ObsidianDailies -365 0<cr>', desc = 'Last year' },
+            },
             { '<leader>of', ':ObsidianFollowLink<cr>', desc = 'Follow link' },
             { '<leader>oi', ':ObsidianPasteImg ', desc = 'Paste image from clipboard' },
             { '<leader>ol', ':ObsidianLinks<cr>', desc = 'Show links' },
@@ -98,37 +122,21 @@ return {
                     vim.cmd('ObsidianQuickSwitch')
                 end,
                 desc = 'Obsidian Markdown Files',
+                icon = '',
             },
             { '<leader>oO', ':ObsidianOpen ', desc = 'Open in app' },
-            { '<leader>or', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
-            { '<leader>oq', ':ObsidianQuickSwitch<cr>', desc = 'Quick switch' },
             { '<leader>os', ':ObsidianSearch ', desc = 'Search' },
-            { '<leader>ot', ':ObsidianToday<cr>', desc = 'Today\'s note' },
-            { '<leader>oy', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
             {
-                { '<leader>ow', desc = 'Switch workspace' },
+                { '<leader>ot', desc = 'Take daily note' },
+                { '<leader>ott', ':ObsidianToday<cr>', desc = 'Today\'s note' },
+                { '<leader>otw', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
+                { '<leader>oty', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
+            },
+            {
+                { '<leader>ow', desc = 'Workspaces' },
                 { '<leader>owc', ':ObsidianWorkspace current<cr>', desc = 'Current' },
                 { '<leader>owg', ':ObsidianWorkspace global<cr>', desc = 'Global' },
-                { '<leader>owl', ':ObsidianWorkspace obsidian<cr>', desc = 'Vault' },
-            },
-        })
-        which_key.add({
-            { '<leader>m', desc = 'Markdown', icon = '' },
-            {
-                '<leader>mm',
-                function()
-                    vim.cmd('ObsidianWorkspace current')
-                    vim.cmd('ObsidianQuickSwitch')
-                end,
-                desc = 'Current Markdown Files',
-            },
-            {
-                '<leader>mg',
-                function()
-                    vim.cmd('ObsidianWorkspace global')
-                    vim.cmd('ObsidianQuickSwitch')
-                end,
-                desc = 'Global Markdown Files',
+                { '<leader>owo', ':ObsidianWorkspace obsidian<cr>', desc = 'Obsidian' },
             },
         })
         which_key.add({
