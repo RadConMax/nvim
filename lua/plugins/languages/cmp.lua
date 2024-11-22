@@ -107,6 +107,7 @@ return {
         })
 
         which_key.add({
+            { '<leader>l', desc = 'LSP', icon = '' },
             { '<leader>lv', ':LazyDev lsp<cr>', desc = 'LazyDev', icon = '' },
         })
     end

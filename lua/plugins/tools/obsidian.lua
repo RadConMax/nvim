@@ -106,6 +106,7 @@ return {
                 icon = '',
             },
             { '<leader>o', desc = 'Obsidian', icon = '' },
+            { '<leader>ob', ':ObsidianOpen ', desc = 'Open in app' },
             {
                 { '<leader>od', desc = 'Dailies' },
                 {
@@ -135,7 +136,6 @@ return {
                 desc = 'Obsidian Markdown Files',
                 icon = '',
             },
-            { '<leader>OO', ':ObsidianOpen ', desc = 'Open in app' },
             { '<leader>op', ':MarkdownPreviewToggle<cr>', desc = 'Toggle preview' },
             { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
             {
