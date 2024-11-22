@@ -111,7 +111,7 @@ return {
                 { '<leader>od', desc = 'Dailies' },
                 {
                     { '<leader>odo', desc = 'Open daily notes' },
-                    { '<leader>odo', ':ObsidianDailies<cr>', desc = 'All' },
+                    { '<leader>odoa', ':ObsidianDailies<cr>', desc = 'All' },
                     { '<leader>odom', ':ObsidianDailies -30 0<cr>', desc = 'Last month' },
                     { '<leader>odos', ':ObsidianDailies -180 0<cr>', desc = 'Last six months' },
                     { '<leader>odow', ':ObsidianDailies -7 0<cr>', desc = 'Last week' },
