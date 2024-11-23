@@ -37,12 +37,11 @@ return {
                 },
                 {
                     name = 'obsidian',
-                    path = (obsidian_vault_path == nil and '~/.notes') or obsidian_vault_path,
+                    path = (obsidian_vault_path == nil and '~') or obsidian_vault_path,
                 },
             },
-            notes_subdir = '.notes',
             daily_notes = {
-                folder = '.notes/dailies',
+                folder = 'dailies',
             },
             completion = {
                 nvim_cmp = true,

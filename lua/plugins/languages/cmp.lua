@@ -18,6 +18,11 @@ return {
         }, -- Snippet engine
         { 'onsails/lspkind.nvim' }, -- Adds vscode-like pictograms to neovim built-in lsp
         {
+            'kristijanhusak/vim-dadbod-completion',
+            ft = { 'sql', 'mysql', 'plsql' },
+            lazy = true,
+        },
+        {
             'folke/lazydev.nvim',
             dependencies = {
                 { 'Bilal2453/luvit-meta', lazy = true },
@@ -103,6 +108,13 @@ return {
             formatting = {
                 fields = {'abbr', 'kind', 'menu'},
                 format = lspkind.cmp_format({ --[[mode = 'symbol', maxwidth = 50, ellipsis_char = '...'--]] })
+            },
+        })
+
+        cmp.setup.filetype({ 'sql' }, {
+            sources = {
+                { name = 'vim-dadbod-completion' },
+                { name = 'buffer' },
             },
         })
 
