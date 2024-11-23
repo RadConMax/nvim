@@ -3,15 +3,15 @@ local which_key = require('which-key')
 -- Which key mappings
 which_key.add({
     -- Set filetype
-    { '<leader>s',desc = 'Set filetype', icon = '' },
-    { '<leader>sj', ':set filetype=json<cr>', desc = 'JSON', icon = '' },
-    { '<leader>sl', ':set filetype=lua<cr>', desc = 'Lua', icon = '' },
-    { '<leader>sm', ':set filetype=markdown<cr>', desc = 'Markdown', icon = '' },
-    { '<leader>sp', ':set filetype=python<cr>', desc = 'Python', icon = '' },
-    { '<leader>sq', ':set filetype=sql<cr>', desc = 'SQL', icon = '' },
-    { '<leader>ss', ':set filetype=sh<cr>', desc = 'Shell', icon = '' },
-    { '<leader>st', ':set filetype=typescript<cr>', desc = 'TypeScript', icon = '' },
-    { '<leader>sv', ':set filetype=javascript<cr>', desc = 'JavaScript', icon = '' },
+    { '<leader>F',desc = 'Filetype', icon = '' },
+    { '<leader>Fj', ':set filetype=json<cr>', desc = 'JSON', icon = '' },
+    { '<leader>Fl', ':set filetype=lua<cr>', desc = 'Lua', icon = '' },
+    { '<leader>Fm', ':set filetype=markdown<cr>', desc = 'Markdown', icon = '' },
+    { '<leader>Fp', ':set filetype=python<cr>', desc = 'Python', icon = '' },
+    { '<leader>Fq', ':set filetype=sql<cr>', desc = 'SQL', icon = '' },
+    { '<leader>Fs', ':set filetype=sh<cr>', desc = 'Shell', icon = '' },
+    { '<leader>Ft', ':set filetype=typescript<cr>', desc = 'TypeScript', icon = '' },
+    { '<leader>Fv', ':set filetype=javascript<cr>', desc = 'JavaScript', icon = '' },
 })
 which_key.add({
     hidden = true,
