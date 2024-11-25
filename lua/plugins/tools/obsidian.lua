@@ -139,7 +139,7 @@ return {
                 { '<leader>osc', ':ObsidianTOC<cr>', desc = 'Table of contents' },
                 { '<leader>osl', ':ObsidianLinks<cr>', desc = 'Links' },
                 { '<leader>ost', ':ObsidianTags ', desc = 'Tags' },
-                { '<leader>osw', ':ObsidianSearch ', desc = 'Word' },
+                { '<leader>osw', ':ObsidianSearch ', desc = 'Words' },
             },
             {
                 { '<leader>ot', desc = 'Templates' },
