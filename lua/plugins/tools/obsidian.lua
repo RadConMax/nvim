@@ -42,6 +42,9 @@ return {
                             subdir = vim.NIL,
                         },
                         disable_frontmatter = true,
+                        daily_notes = {
+                            folder = '',
+                        },
                     },
                 },
                 {
