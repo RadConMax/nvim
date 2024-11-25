@@ -4,14 +4,27 @@ return {
     version = '*',
     lazy = false,
     config = function()
+        local markdown_images_path = os.getenv('MARKDOWN_IMAGES_PATH')
+        local personal_vault_path = os.getenv('PERSONAL_VAULT_PATH')
+        local work_vault_path = os.getenv('WORK_VAULT_PATH')
+
         local obsidian = require('obsidian')
         local which_key = require('which-key')
-        local obsidian_vault_path = os.getenv('OBSIDIAN_VAULT_PATH')
-        local obsidian_images_path = os.getenv('OBSIDIAN_IMAGES_PATH')
 
         obsidian.setup({
             attachments = {
-                img_folder = obsidian_images_path,
+                img_folder = markdown_images_path,
+                img_name_func = function()
+                    return string.format('%s-', os.time())
+                end,
+                img_text_func = function(client, path)
+                    path = client:vault_relative_path(path) or path
+                    return string.format(
+                        '![%s](%s)',
+                        path.name,
+                        string.gsub(path.filename, '%s+', '%%20')
+                    )
+                end,
             },
             ui = {
                 enable = false,
@@ -32,12 +45,12 @@ return {
                     },
                 },
                 {
-                    name = 'global',
-                    path = '~/.notes',
+                    name = 'personal',
+                    path = (personal_vault_path == nil and '~') or personal_vault_path,
                 },
                 {
-                    name = 'obsidian',
-                    path = (obsidian_vault_path == nil and '~') or obsidian_vault_path,
+                    name = 'work',
+                    path = (work_vault_path == nil and '~') or work_vault_path,
                 },
             },
             daily_notes = {
@@ -85,24 +98,17 @@ return {
         })
 
         which_key.add({
-            { '<leader>m', desc = 'Markdown', icon = '' },
             {
-                '<leader>mm',
-                function()
-                    vim.cmd('ObsidianWorkspace current')
-                    vim.cmd('ObsidianQuickSwitch')
-                end,
-                desc = 'Current Markdown Files',
-                icon = '',
-            },
-            {
-                '<leader>mg',
-                function()
-                    vim.cmd('ObsidianWorkspace global')
-                    vim.cmd('ObsidianQuickSwitch')
-                end,
-                desc = 'Global Markdown Files',
-                icon = '',
+                { '<leader>m', desc = 'Markdown', icon = '' },
+                {
+                    '<leader>mm',
+                    function()
+                        vim.cmd('ObsidianWorkspace current')
+                        vim.cmd('ObsidianQuickSwitch')
+                    end,
+                    desc = 'Current Markdown Files',
+                    icon = '',
+                },
             },
             { '<leader>o', desc = 'Obsidian', icon = '' },
             { '<leader>ob', ':ObsidianOpen ', desc = 'Open in app' },
@@ -126,16 +132,6 @@ return {
             { '<leader>of', ':ObsidianFollowLink<cr>', desc = 'Follow link' },
             { '<leader>oi', ':ObsidianPasteImg<cr>', desc = 'Image' },
             { '<leader>on', ':ObsidianNew ', desc = 'New' },
-            {
-                '<leader>oo',
-                function()
-                    vim.cmd('ObsidianWorkspace obsidian')
-                    vim.cmd('ObsidianQuickSwitch')
-                end,
-                desc = 'Obsidian Markdown Files',
-                icon = '',
-            },
-            { '<leader>op', ':MarkdownPreviewToggle<cr>', desc = 'Toggle preview' },
             { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
             {
                 { '<leader>os', desc = 'Search' },
@@ -151,10 +147,24 @@ return {
                 { '<leader>oti', ':ObsidianTemplate ', desc = 'Insert' },
             },
             {
-                { '<leader>ow', desc = 'Workspaces' },
-                { '<leader>owc', ':ObsidianWorkspace current<cr>', desc = 'Current' },
-                { '<leader>owg', ':ObsidianWorkspace global<cr>', desc = 'Global' },
-                { '<leader>owo', ':ObsidianWorkspace obsidian<cr>', desc = 'Obsidian' },
+                {
+                    '<leader>op',
+                    function()
+                        vim.cmd('ObsidianWorkspace personal')
+                        vim.cmd('ObsidianQuickSwitch')
+                    end,
+                    desc = 'Personal Vault Files',
+                    icon = '',
+                },
+                {
+                    '<leader>ow',
+                    function()
+                        vim.cmd('ObsidianWorkspace work')
+                        vim.cmd('ObsidianQuickSwitch')
+                    end,
+                    desc = 'Work Vault Files',
+                    icon = '',
+                },
             },
         })
         which_key.add({
