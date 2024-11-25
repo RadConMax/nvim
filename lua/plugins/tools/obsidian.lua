@@ -111,7 +111,7 @@ return {
                 },
             },
             { '<leader>o', desc = 'Obsidian', icon = '' },
-            { '<leader>ob', ':ObsidianOpen ', desc = 'Open in app' },
+            { '<leader>ob', ':ObsidianBacklinks <cr>', desc = 'Back links' },
             {
                 { '<leader>od', desc = 'Dailies' },
                 {
@@ -132,10 +132,10 @@ return {
             { '<leader>of', ':ObsidianFollowLink<cr>', desc = 'Follow link' },
             { '<leader>oi', ':ObsidianPasteImg<cr>', desc = 'Image' },
             { '<leader>on', ':ObsidianNew ', desc = 'New' },
+            { '<leader>oo', ':ObsidianOpen ', desc = 'Open in app' },
             { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
             {
                 { '<leader>os', desc = 'Search' },
-                { '<leader>osb', ':ObsidianBacklinks <cr>', desc = 'Back links' },
                 { '<leader>osc', ':ObsidianTOC<cr>', desc = 'Table of contents' },
                 { '<leader>osl', ':ObsidianLinks<cr>', desc = 'Links' },
                 { '<leader>ost', ':ObsidianTags ', desc = 'Tags' },
