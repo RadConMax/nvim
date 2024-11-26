@@ -4,6 +4,7 @@ return {
     dependencies = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        { 'nvim-treesitter/nvim-treesitter' },
         { 'nvim-tree/nvim-web-devicons' },
     },
     lazy = false,
@@ -15,8 +16,13 @@ return {
 
         telescope.setup({
             defaults = {
+                layout_config = {
+                    width = 0.90,
+                },
+                layout_strategy = 'vertical',
                 mappings = {
                     i = {
+                        ['<C-h>'] = 'which_key',
                         ['<C-k>'] = actions.move_selection_previous,
                         ['<C-j>'] = actions.move_selection_next,
                         ['<C-q>'] = actions.smart_send_to_qflist,
@@ -30,20 +36,20 @@ return {
 
         which_key.add({
             { '<leader>f', desc = 'Find' },
-            { '<leader>fb', builtin.buffers, desc = 'Find buffers' },
-            { '<leader>fc', builtin.grep_string, desc = 'Find string under cursor in cwd' },
-            { '<leader>fd', ':Telescope diagnostics bufnr=0<cr>', desc = 'Find buffer diagnostics' },
-            { '<leader>ff', builtin.find_files, desc = 'Find files' },
-            { '<leader>fg', builtin.git_files, desc = 'Find git files' },
-            { '<leader>fh', builtin.search_history, desc = 'Search history' },
-            { '<leader>fl', builtin.highlights, desc = 'Find highlights' },
-            { '<leader>fm', builtin.marks, desc = 'Find marks' },
-            { '<leader>fq', builtin.quickfix, desc = 'Find quickfix' },
-            { '<leader>fQ', builtin.quickfixhistory, desc = 'Find quickfix history' },
-            { '<leader>fr', builtin.oldfiles, desc = 'Find recent opened files' },
-            { '<leader>fs', builtin.live_grep, desc = 'Find string in cwd' },
-            { '<leader>fw', builtin.spell_suggest, desc = 'Find word suggestion' },
-            { '<leader>fx', builtin.current_buffer_fuzzy_find, desc = 'Find current buffer fuzzy find' },
+            { '<leader>fb', builtin.buffers, desc = 'Buffers' },
+            { '<leader>fc', builtin.grep_string, desc = 'Current word in working directory' },
+            { '<leader>fd', ':Telescope diagnostics bufnr=0<cr>', desc = 'Diagnostics' },
+            { '<leader>ff', builtin.find_files, desc = 'Files' },
+            { '<leader>fg', builtin.git_files, desc = 'Git files' },
+            { '<leader>fh', builtin.search_history, desc = 'History' },
+            { '<leader>fj', builtin.jumplist, desc = 'Jump list' },
+            { '<leader>fl', builtin.highlights, desc = 'Highlights' },
+            { '<leader>fm', builtin.marks, desc = 'Marks' },
+            { '<leader>fq', builtin.quickfix, desc = 'Quickfix' },
+            { '<leader>fr', builtin.oldfiles, desc = 'Recent opened files' },
+            { '<leader>fs', builtin.live_grep, desc = 'In working directory' },
+            { '<leader>fw', builtin.spell_suggest, desc = 'Spell suggestion' },
+            { '<leader>fx', builtin.current_buffer_fuzzy_find, desc = 'In current buffer' },
         })
     end,
 }
