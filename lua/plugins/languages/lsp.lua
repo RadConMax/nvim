@@ -18,7 +18,7 @@ return {
                 buffer = bufnr,
                 noremap = true,
                 hidden = true,
-                { '<c-k>', vim.lsp.buf.signature_help, desc = 'Signature help' },
+                { '<leader><c-k>', vim.lsp.buf.signature_help, desc = 'Signature help' },
                 {
                     { 'd', desc = 'Diagnostics', icon = '󰈙' },
                     { 'dd', vim.diagnostic.open, desc = 'Open diagnostic' },

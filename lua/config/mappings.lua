@@ -20,6 +20,10 @@ which_key.add({
         { 'J', 'mzJ`z', desc = 'Append next line to current line', icon = '' },
         { 'N', 'Nzzzv', desc = 'Search next but keep cursor centered', icon = '' },
         -- Navigation
+        { '<c-h>', '<C-w>h', desc = 'Move to left window', icon = '󰮱' },
+        { '<c-j>', '<C-w>j', desc = 'Move to bottom window', icon = '󰮱' },
+        { '<c-k>', '<C-w>k', desc = 'Move to upper window', icon = '󰮱' },
+        { '<c-l>', '<C-w>l', desc = 'Move to right window', icon = '󰮱' },
         { '<c-d>', '<C-d>zz', desc = 'Move half page down but keep cursor centered', icon = '󰮱' },
         { '<c-u>', '<C-u>zz', desc = 'Move half page up but keep cursor centered', icon = '󰮳' },
         { '<leader>cc', ':qa<cr>', desc = 'Exit', icon = '󱎘' },
