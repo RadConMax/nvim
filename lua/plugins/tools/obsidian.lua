@@ -114,60 +114,33 @@ return {
                 },
             },
             { '<leader>o', desc = 'Obsidian', icon = '' },
+            { '<leader>oa', ':ObsidianOpen ', desc = 'Open in app' },
             { '<leader>ob', ':ObsidianBacklinks <cr>', desc = 'Back links' },
+            { '<leader>oc', ':ObsidianTOC<cr>', desc = 'Table of contents' },
             {
                 { '<leader>od', desc = 'Dailies' },
-                {
-                    { '<leader>odo', desc = 'Open daily notes' },
-                    { '<leader>odoa', ':ObsidianDailies<cr>', desc = 'All' },
-                    { '<leader>odom', ':ObsidianDailies -30 0<cr>', desc = 'Last month' },
-                    { '<leader>odos', ':ObsidianDailies -180 0<cr>', desc = 'Last six months' },
-                    { '<leader>odow', ':ObsidianDailies -7 0<cr>', desc = 'Last week' },
-                    { '<leader>odoy', ':ObsidianDailies -365 0<cr>', desc = 'Last year' },
-                },
-                {
-                    { '<leader>odn', desc = 'New daily note' },
-                    { '<leader>odnn', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
-                    { '<leader>odnt', ':ObsidianToday<cr>', desc = 'Today\'s note' },
-                    { '<leader>odny', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
-                },
+                { '<leader>oda', ':ObsidianDailies<cr>', desc = 'All daily notes' },
+                { '<leader>odd', ':ObsidianToday<cr>', desc = 'Today\'s note' },
+                { '<leader>odm', ':ObsidianDailies -30 0<cr>', desc = 'Last month notes' },
+                { '<leader>odt', ':ObsidianTomorrow<cr>', desc = 'Tomorrow\'s note' },
+                { '<leader>odw', ':ObsidianDailies -7 0<cr>', desc = 'Last week\' noted' },
+                { '<leader>ody', ':ObsidianYesterday<cr>', desc = 'Yesterday\'s note' },
             },
             { '<leader>of', ':ObsidianFollowLink<cr>', desc = 'Follow link' },
             { '<leader>oi', ':ObsidianPasteImg<cr>', desc = 'Image' },
+            { '<leader>ol', ':ObsidianLinks<cr>', desc = 'Links' },
+            { '<leader>om', ':ObsidianWorkspace current<cr>', desc = 'Markdown Files', icon = '' },
             { '<leader>on', ':ObsidianNew ', desc = 'New' },
-            { '<leader>oo', ':ObsidianOpen ', desc = 'Open in app' },
+            { '<leader>op', ':ObsidianWorkspace personal<cr>', desc = 'Personal Vault', icon = '󱉼' },
+            { '<leader>oo', ':ObsidianQuickSwitch<cr>', desc = 'Quick Switch' },
             { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
+            { '<leader>os', ':ObsidianSearch ', desc = 'Search' },
+            { '<leader>ot', ':ObsidianTags ', desc = 'Tags' },
+            { '<leader>ow', 'ObsidianWorkspace work<cr>', desc = 'Work Vault', icon = '󱉼' },
             {
-                { '<leader>os', desc = 'Search' },
-                { '<leader>osc', ':ObsidianTOC<cr>', desc = 'Table of contents' },
-                { '<leader>osl', ':ObsidianLinks<cr>', desc = 'Links' },
-                { '<leader>ost', ':ObsidianTags ', desc = 'Tags' },
-                { '<leader>osw', ':ObsidianSearch ', desc = 'Words' },
-            },
-            {
-                { '<leader>ot', desc = 'Templates' },
-                { '<leader>otf', ':ObsidianNewFromTemplate ', desc = 'From Template' },
-                { '<leader>oti', ':ObsidianTemplate ', desc = 'Insert' },
-            },
-            {
-                {
-                    '<leader>op',
-                    function()
-                        vim.cmd('ObsidianWorkspace personal')
-                        vim.cmd('ObsidianQuickSwitch')
-                    end,
-                    desc = 'Personal Vault Files',
-                    icon = '',
-                },
-                {
-                    '<leader>ow',
-                    function()
-                        vim.cmd('ObsidianWorkspace work')
-                        vim.cmd('ObsidianQuickSwitch')
-                    end,
-                    desc = 'Work Vault Files',
-                    icon = '',
-                },
+                { '<leader>oT', desc = 'Templates' },
+                { '<leader>oTf', ':ObsidianNewFromTemplate ', desc = 'From Template' },
+                { '<leader>oTi', ':ObsidianTemplate ', desc = 'Insert' },
             },
         })
         which_key.add({
