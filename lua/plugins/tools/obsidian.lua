@@ -136,7 +136,7 @@ return {
             { '<leader>or', ':ObsidianRename ', desc = 'Rename' },
             { '<leader>os', ':ObsidianSearch ', desc = 'Search' },
             { '<leader>ot', ':ObsidianTags ', desc = 'Tags' },
-            { '<leader>ow', 'ObsidianWorkspace work<cr>', desc = 'Work Vault', icon = '󱉼' },
+            { '<leader>ow', ':ObsidianWorkspace work<cr>', desc = 'Work Vault', icon = '󱉼' },
             {
                 { '<leader>oT', desc = 'Templates' },
                 { '<leader>oTf', ':ObsidianNewFromTemplate ', desc = 'From Template' },
