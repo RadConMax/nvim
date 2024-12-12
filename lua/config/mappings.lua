@@ -46,6 +46,7 @@ which_key.add({
     {
         -- Tools
         { '<leader>ll', ':Lazy<cr>', desc = 'Lazy (Open)', icon = '󰀻' },
+        { '<leader>T', ':terminal<cr>', desc = 'Terminal (Open)', icon = '' },
     },
 })
 which_key.add({
