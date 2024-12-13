@@ -18,6 +18,9 @@ return {
         -- Make bg transparent
         theme.normal.c.bg = 'none'
 
+        -- Make fg white
+        theme.normal.c.fg = '#ffffff'
+
         lualine.setup({
             options = {
                 theme = theme,
