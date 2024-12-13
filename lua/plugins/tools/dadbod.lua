@@ -23,20 +23,16 @@ return {
             { '<leader>DD', ':DBUIToggle<cr>', desc = 'Database', icon = '' },
             { '<leader>Da', ':DBUIAddConnection<cr>', desc = 'Add connection', icon = '' },
             { '<leader>Db', ':DBUIFindBuffer<cr>', desc = 'Find buffer', icon = '' },
-            { '<leader>Dl', ':DBUILastQueryInfo<cr>', desc = 'Last query info', icon = '' },
+            { '<leader>De', '<Plug>(DBUI_ExecuteQuery)', desc = 'Execute query', icon = '' },
+            { '<leader>Di', ':DBUILastQueryInfo<cr>', desc = 'Last query info', icon = '' },
+            { '<leader>Dp', '<Plug>(DBUI_EditBindParameters)', desc = 'Edit bind parameters', icon = '' },
             { '<leader>Dr', ':DBUIRenameBuffer<cr>', desc = 'Rename buffer', icon = '󰑕' },
-        })
-        which_key.add({
-            ft = { 'sql', 'mysql', 'plsql' },
-            { '<leader>e', '<Plug>(DBUI_ExecuteQuery)', desc = 'Execute query', icon = '' },
-            { '<leader>p', '<Plug>(DBUI_EditBindParameters)', desc = 'Edit bind parameters', icon = '' },
-            { '<leader>r', '<Plug>(DBUI_ToggleResultLayout)', desc = 'Toggle results', icon = ' ' },
-            { '<leader>s', '<Plug>(DBUI_SaveQuery)', desc = 'Save query', icon = '' },
+            { '<leader>Ds', '<Plug>(DBUI_SaveQuery)', desc = 'Save query', icon = '' },
+            { '<leader>Dt', '<Plug>(DBUI_ToggleResultLayout)', desc = 'Toggle results', icon = ' ' },
         })
         which_key.add({
             mode = { 'v' },
-            ft = { 'sql', 'mysql', 'plsql' },
-            { '<leader>E', '<Plug>(DBUI_ExecuteQuery)', desc = 'Execute selected query', icon = '' },
+            { '<leader>De', '<Plug>(DBUI_ExecuteQuery)', desc = 'Execute selected query', icon = '' },
         })
     end,
 }
