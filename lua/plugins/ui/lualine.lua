@@ -12,14 +12,19 @@ return {
         -- Sections
         local diagnostics = { 'diagnostics', sources = { 'nvim_lsp' }, sections = { 'error', 'warn', 'info', 'hint' } }
         local filename = { 'filename', path = 1 };
+        local recording = { noice.api.statusline.mode.get, cond = noice.api.statusline.mode.has, color = { fg = '#ff9e64' } }
         local commands = { noice.api.status.command.get, cond = noice.api.status.command.has }
         local search = { noice.api.status.search.get, cond = noice.api.status.search.has }
 
         -- Make bg transparent
         theme.normal.c.bg = 'none'
+        theme.inactive.c.bg = 'none'
 
         -- Make fg white
         theme.normal.c.fg = '#ffffff'
+        theme.inactive.a.fg = '#ffffff'
+        theme.inactive.b.fg = '#ffffff'
+        theme.inactive.c.fg = '#ffffff'
 
         lualine.setup({
             options = {
@@ -44,7 +49,7 @@ return {
             winbar = {
                 lualine_a = { 'mode' },
                 lualine_b = { commands },
-                lualine_c = { },
+                lualine_c = { recording },
                 lualine_x = { search },
                 lualine_y = { 'location' },
                 lualine_z = { 'progress' },
