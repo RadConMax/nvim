@@ -22,7 +22,8 @@ return {
                     italic = true,
                 }
                 hl.CursorLineNr = {
-                    fg = c.magenta2,
+                    bg = c.bg_highlight,
+                    fg = c.magenta,
                 }
                 hl.LineNr = nr
                 hl.LineNrAbove = nr
