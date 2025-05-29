@@ -20,14 +20,16 @@ return {
 
         mason_lspconfig.setup({
             ensure_installed = {
+                'bashls',
                 'cssls',
                 'emmet_ls',
                 'eslint',
+                'helm_ls',
                 'html',
+                'jsonls',
                 'lua_ls',
                 'marksman',
                 'sqlls',
-                'tailwindcss',
                 'ts_ls',
                 'yamlls',
             },

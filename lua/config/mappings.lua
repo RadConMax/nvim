@@ -4,6 +4,7 @@ local which_key = require('which-key')
 which_key.add({
     -- Set filetype
     { '<leader>F',desc = 'Filetype', icon = '' },
+    { '<leader>Fc', ':set filetype=config<cr>', desc = 'Config', icon = '' },
     { '<leader>Fj', ':set filetype=json<cr>', desc = 'JSON', icon = '' },
     { '<leader>Fl', ':set filetype=lua<cr>', desc = 'Lua', icon = '' },
     { '<leader>Fm', ':set filetype=markdown<cr>', desc = 'Markdown', icon = '' },
@@ -20,11 +21,6 @@ which_key.add({
         { 'J', 'mzJ`z', desc = 'Append next line to current line', icon = '' },
         { 'N', 'Nzzzv', desc = 'Search next but keep cursor centered', icon = '' },
         -- Navigation
-        { '<c-h>', ':<C-U>TmuxNavigateLeft<cr>', desc = 'Navigate to left', icon = '󰮱' },
-        { '<c-j>', ':<C-U>TmuxNavigateDown<cr>', desc = 'Navigate to down', icon = '󰮱' },
-        { '<c-k>', ':<C-U>TmuxNavigateUp<cr>', desc = 'Navigate to up', icon = '󰮱' },
-        { '<c-l>', ':<C-U>TmuxNavigateRight<cr>', desc = 'Navigate to right', icon = '󰮱' },
-        { '<c-\\>', ':<C-U>TmuxNavigatePrevious<cr>', desc = 'Navigate to previous', icon = '󰮱' },
         { '<c-d>', '<C-d>zz', desc = 'Move half page down but keep cursor centered', icon = '󰮱' },
         { '<c-u>', '<C-u>zz', desc = 'Move half page up but keep cursor centered', icon = '󰮳' },
         { '<leader>cc', ':qa<cr>', desc = 'Exit', icon = '󱎘' },

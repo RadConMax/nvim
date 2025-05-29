@@ -6,13 +6,9 @@ return {
         { 'antosha417/nvim-lsp-file-operations', config = true },
     },
     config = function()
-        vim.diagnostic.config({ float = { border = 'rounded' } })
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
-
-        local lspconfig = require('lspconfig')
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
         local which_key = require('which-key')
+        local base_on_attach = vim.lsp.config.eslint.on_attach
         local on_attach = function(_, bufnr)
             which_key.add({
                 buffer = bufnr,
@@ -67,45 +63,80 @@ return {
             })
         end
 
+        local severity = vim.diagnostic.severity
+
+        vim.diagnostic.config({
+            float = { border = 'single' },
+            signs = { text = { [severity.ERROR] = ' ', [severity.WARN] = ' ', [severity.HINT] = '󰠠 ', [severity.INFO] = ' ' } },
+            underline = true,
+        })
+
         local capabilities = cmp_nvim_lsp.default_capabilities()
-        local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
 
-        for type, icon in pairs(signs) do
-            local hl = 'DiagnosticSign' .. type
-
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-        end
-
-        lspconfig['html'].setup({ capabilities = capabilities, on_attach = on_attach })
-        lspconfig['ts_ls'].setup({ capabilities = capabilities, on_attach = on_attach })
-        lspconfig['cssls'].setup({ capabilities = capabilities, on_attach = on_attach })
-        lspconfig['tailwindcss'].setup({ capabilities = capabilities, on_attach = on_attach })
-        lspconfig['emmet_ls'].setup({
+        vim.lsp.config('bashls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('cssls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('emmet_ls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('eslint', {
             capabilities = capabilities,
-            on_attach = on_attach,
-            filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+            on_attach = function(client, bufnr)
+                if base_on_attach then
+                    base_on_attach(client, bufnr)
+                end
+
+                on_attach(client, bufnr)
+
+                vim.api.nvim_create_autocmd('BufWritePre', {
+                    buffer = bufnr,
+                    command = 'EslintFixAll',
+                })
+            end,
         })
-        lspconfig['eslint'].setup({
+        vim.lsp.config('helm_ls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('html', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('jsonls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('lua_ls', {
             capabilities = capabilities,
-            on_attach = on_attach,
-            filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
-        })
-        lspconfig['lua_ls'].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-                Lua = {
+            on_init = function(client)
+                if client.workspace_folders then
+                    local path = client.workspace_folders[1].name
+                    if
+                        path ~= vim.fn.stdpath('config')
+                        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                    then
+                        return
+                    end
+                end
+
+                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
                     diagnostics = {
                         globals = { 'vim' },
                     },
-                    workspace = {
-                        library = {
-                            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                            [vim.fn.stdpath('config') .. '/lua'] = true,
-                        },
+                    runtime = {
+                        version = 'LuaJIT',
+                        path = { 'lua/?.lua', 'lua/?/init.lua' },
                     },
-                },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Depending on the usage, you might want to add additional paths here.
+                            -- '${3rd}/luv/library',
+                            -- '${3rd}/busted/library',
+                        }
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                })
+            end,
+            on_attach = on_attach,
+            settings = {
+                Lua = { },
             },
         })
+        vim.lsp.config('marksman', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('sqlls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('ts_ls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('yamlls', { capabilities = capabilities, on_attach = on_attach })
     end,
 }

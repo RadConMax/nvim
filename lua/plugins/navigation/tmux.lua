@@ -12,11 +12,11 @@ return {
 
         which_key.add({
             hidden = true,
-            { '<m-h>', ':<C-U>TmuxNavigateLeft<cr>', desc = 'Navigate Left', icon = '󰮱' },
-            { '<m-j>', ':<C-U>TmuxNavigateDown<cr>', desc = 'Navigate Down', icon = '󰮱' },
-            { '<m-k>', ':<C-U>TmuxNavigateUp<cr>', desc = 'Navigate Up', icon = '󰮱' },
-            { '<m-l>', ':<C-U>TmuxNavigateRight<cr>', desc = 'Navigate Right', icon = '󰮱' },
-            { '<m-\\>', ':<C-U>TmuxNavigatePrevious<cr>', desc = 'Navigate Previous', icon = '󰮱' },
+            { '<c-h>', ':<C-U>TmuxNavigateLeft<cr>', desc = 'Navigate to left', icon = '󰮱' },
+            { '<c-j>', ':<C-U>TmuxNavigateDown<cr>', desc = 'Navigate to down', icon = '󰮱' },
+            { '<c-k>', ':<C-U>TmuxNavigateUp<cr>', desc = 'Navigate to up', icon = '󰮱' },
+            { '<c-l>', ':<C-U>TmuxNavigateRight<cr>', desc = 'Navigate to right', icon = '󰮱' },
+            { '<c-\\>', ':<C-U>TmuxNavigatePrevious<cr>', desc = 'Navigate to previous', icon = '󰮱' },
         })
     end,
 }

@@ -28,9 +28,12 @@ return {
                 hl.LineNr = nr
                 hl.LineNrAbove = nr
                 hl.LineNrBelow = nr
+                hl.TabLineFill = {
+                    bg = c.none,
+                }
             end,
         })
 
-        vim.cmd.colorscheme('tokyonight-moon')
+        vim.cmd.colorscheme('tokyonight-night')
     end,
 }

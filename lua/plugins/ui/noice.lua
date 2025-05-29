@@ -9,7 +9,20 @@ return {
         local noice = require('noice')
         local which_key = require('which-key')
 
-        noice.setup()
+        noice.setup({
+            lsp = {
+                hover = {
+                    opts = {
+                        border = 'single',
+                    },
+                },
+                signature = {
+                    opts = {
+                        border = 'single',
+                    },
+                },
+            },
+        })
 
         which_key.add({
             { '<leader>n', desc = 'Noice' },

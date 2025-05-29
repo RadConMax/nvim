@@ -4,7 +4,7 @@ return {
     dependencies = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        { 'nvim-treesitter/nvim-treesitter' },
+        { 'nvim-telescope/telescope-ui-select.nvim' },
         { 'nvim-tree/nvim-web-devicons' },
     },
     lazy = false,
@@ -17,7 +17,11 @@ return {
         telescope.setup({
             defaults = {
                 layout_config = {
-                    width = 0.90,
+                    vertical = {
+                        width = 0.99,
+                        height = 0.99,
+                        preview_cutoff = 30,
+                    },
                 },
                 layout_strategy = 'vertical',
                 mappings = {
@@ -28,11 +32,15 @@ return {
                         ['<C-q>'] = actions.smart_send_to_qflist,
                     },
                 },
+                preview = {
+                    treesitter = false,
+                },
             },
         })
 
         telescope.load_extension('fzf')
         telescope.load_extension('lazygit')
+        telescope.load_extension('ui-select')
 
         which_key.add({
             { '<leader>f', desc = 'Find' },

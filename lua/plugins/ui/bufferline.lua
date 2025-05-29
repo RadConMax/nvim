@@ -12,7 +12,7 @@ return {
                 close_command = 'Bdelete %d',
                 right_mouse_command = 'Bdelete %d',
                 indicator = {
-                    style = '| ',
+                    style = 'none',
                 },
                 diagnostics = 'nvim_lsp',
                 diagnostics_indicator = function(_, _, diagnostics_dict)
@@ -49,12 +49,14 @@ return {
                 { '<leader>bsd', ':BufferLineSortByDirectory<cr>', desc = 'Sort buffers by directory' },
                 { '<leader>bse', ':BufferLineSortByExtension<cr>', desc = 'Sort buffers by extension' },
             },
+            { '<leader>.', ':BufferLineCycleNext<cr>', desc = 'Next buffer' },
+            { '<leader>>', ':BufferLineMoveNext<cr>', desc = 'Move buffer to the right' },
+            { '<leader>,', ':BufferLineCycleNext<cr>', desc = 'Next buffer' },
+            { '<leader><', ':BufferLineMovePrev<cr>', desc = 'Move buffer to the left' },
             { '<Tab>', ':BufferLineCycleNext<cr>', desc = 'Next buffer' },
+            { '<leader><Tab>', ':BufferLineMoveNext<cr>', desc = 'Move buffer to the right' },
             { '<S-Tab>', ':BufferLineCyclePrev<cr>', desc = 'Previous buffer' },
-            { '[b', ':BufferLineCyclePrev<cr>', desc = 'Previous buffer' },
-            { '[B', ':BufferLineMovePrev<cr>', desc = 'Move buffer to the left' },
-            { ']b', ':BufferLineCycleNext<cr>', desc = 'Next buffer' },
-            { ']B', ':BufferLineMoveNext<cr>', desc = 'Move buffer to the right' },
+            { '<leader><S-Tab>', ':BufferLineMovePrev<cr>', desc = 'Move buffer to the left' },
         })
     end,
 }

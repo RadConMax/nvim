@@ -22,10 +22,10 @@ return {
 
         wich_key.add({
             { '<leader>S', desc = 'Session', icon = '' },
-            { '<leader>SS', ':SSave<cr>', desc = 'Save session', icon = '' },
-            { '<leader>SL', ':SLoad<cr>', desc = 'Load session', icon = '' },
-            { '<leader>SD', ':SDelete<cr>', desc = 'Delete session', icon = '󰆴' },
             { '<leader>SC', ':SClose<cr>', desc = 'Close session', icon = '󰅖' },
+            { '<leader>SD', ':SDelete<cr>', desc = 'Delete session', icon = '󰆴' },
+            { '<leader>SL', ':SLoad<cr>', desc = 'Load session', icon = '' },
+            { '<leader>SN', ':SSave<cr>', desc = 'New session', icon = '' },
         })
     end,
 }

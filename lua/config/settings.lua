@@ -37,8 +37,23 @@ vim.opt.conceallevel = 2
 -- General settings
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
 vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 50
+
+-- Copilot
+vim.g.node_host_prog = '~/.nvm/versions/node/v23.11.1/lib/node_modules'
+vim.g.copilot_node_command = '~/.nvm/versions/node/v23.11.1/bin/node'
+
+-- Helm files
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'mustache' },
+    callback = function()
+        if vim.fn.expand('%:e') == 'tpl' then
+            vim.bo.filetype = 'helm'
+        end
+        if vim.fn.expand('%:e') == 'yaml' then
+            vim.bo.filetype = 'helm'
+        end
+    end,
+})
