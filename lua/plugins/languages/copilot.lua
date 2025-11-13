@@ -8,13 +8,13 @@ return {
 
         which_key.add({
             { '<leader>c', desc = 'Copilot', icon  = '' },
-            { '<leader>cd', ':Copilot disable<cr>', desc = 'Disable Copilot' },
-            { '<leader>ce', ':Copilot enable<cr>', desc = 'Enable Copilot' },
-            { '<leader>cf', ':Copilot feedback<cr>', desc = 'Send feedback to Copilot' },
-            { '<leader>co', ':Copilot signout<cr>', desc = 'Sign out of Copilot' },
-            { '<leader>cp', ':Copilot panel<cr>', desc = 'Open Copilot panel' },
-            { '<leader>cs', ':Copilot setup<cr>', desc = 'Setup Copilot' },
-            { '<leader>cv', ':Copilot version<cr>', desc = 'Show Copilot version' },
+            { '<leader>cD', ':Copilot disable<cr>', desc = 'Disable Copilot' },
+            { '<leader>cE', ':Copilot enable<cr>', desc = 'Enable Copilot' },
+            { '<leader>cF', ':Copilot feedback<cr>', desc = 'Send feedback to Copilot' },
+            { '<leader>cO', ':Copilot signout<cr>', desc = 'Sign out of Copilot' },
+            { '<leader>cP', ':Copilot panel<cr>', desc = 'Open Copilot panel' },
+            { '<leader>cS', ':Copilot setup<cr>', desc = 'Setup Copilot' },
+            { '<leader>cV', ':Copilot version<cr>', desc = 'Show Copilot version' },
         })
         which_key.add({
             mode = 'i',
