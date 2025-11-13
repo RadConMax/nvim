@@ -16,6 +16,7 @@ return {
 
         telescope.setup({
             defaults = {
+                file_ignore_patterns = { 'node_modules', '.git/' },
                 layout_config = {
                     vertical = {
                         width = 0.99,
@@ -45,9 +46,25 @@ return {
         which_key.add({
             { '<leader>f', desc = 'Find' },
             { '<leader>fb', builtin.buffers, desc = 'Buffers' },
-            { '<leader>fc', builtin.grep_string, desc = 'Current word in working directory' },
+            { '<leader>fc',
+                function()
+                    builtin.grep_string({
+                        additional_args = function()
+                            return { "--hidden" }
+                        end,
+                    })
+                end,
+                desc = 'Current word in working directory',
+            },
             { '<leader>fd', ':Telescope diagnostics bufnr=0<cr>', desc = 'Diagnostics' },
-            { '<leader>ff', builtin.find_files, desc = 'Files' },
+            { '<leader>ff',
+                function()
+                    builtin.find_files({
+                        hidden = true,
+                    })
+                end,
+                desc = 'Files',
+            },
             { '<leader>fg', builtin.git_files, desc = 'Git files' },
             { '<leader>fh', builtin.search_history, desc = 'History' },
             { '<leader>fj', builtin.jumplist, desc = 'Jump list' },
@@ -55,7 +72,16 @@ return {
             { '<leader>fm', builtin.marks, desc = 'Marks' },
             { '<leader>fq', builtin.quickfix, desc = 'Quickfix' },
             { '<leader>fr', builtin.oldfiles, desc = 'Recent opened files' },
-            { '<leader>fs', builtin.live_grep, desc = 'In working directory' },
+            { '<leader>fs',
+                function()
+                    builtin.live_grep({
+                        additional_args = function()
+                            return { "--hidden" }
+                        end
+                    })
+                end,
+                desc = 'In working directory',
+            },
             { '<leader>fw', builtin.spell_suggest, desc = 'Spell suggestion' },
             { '<leader>fx', builtin.current_buffer_fuzzy_find, desc = 'In current buffer' },
         })
