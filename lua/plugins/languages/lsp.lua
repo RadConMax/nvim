@@ -21,8 +21,8 @@ return {
                     { 'df', vim.diagnostic.open_float, desc = 'Open float diagnostic' },
                     { 'dl', ':Telescope diagnostics bufnr=0<cr>', desc = 'Find buffer diagnostics' },
                     { 'dL', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
-                    { 'dp', vim.diagnostic.goto_prev, desc = 'Go to previous diagnostic' },
-                    { 'dn', vim.diagnostic.goto_next, desc = 'Go to next diagnostic' },
+                    { 'dp', function() vim.diagnostic.jump({ count = -1 }) end, desc = 'Go to previous diagnostic' },
+                    { 'dn', function() vim.diagnostic.jump({ count = 1 }) end, desc = 'Go to next diagnostic' },
                 },
                 {
                     { 'g', desc = 'Go to', icon = '' },
@@ -42,6 +42,7 @@ return {
                     { '<leader>l', desc = 'LSP', icon = '' },
                     { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
                     { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'Format file' },
+                    { '<leader>ln', ':EslintFixAll', desc = 'Eslint file' },
                     { '<leader>lr', vim.lsp.buf.rename, desc = 'Smart rename' },
                     { '<leader>lt', ':LspRestart<cr>', desc = 'Restart LSP' },
                 },
@@ -84,11 +85,6 @@ return {
                 end
 
                 on_attach(client, bufnr)
-
-                vim.api.nvim_create_autocmd('BufWritePre', {
-                    buffer = bufnr,
-                    command = 'EslintFixAll',
-                })
             end,
         })
         vim.lsp.config('helm_ls', { capabilities = capabilities, on_attach = on_attach })

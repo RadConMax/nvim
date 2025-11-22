@@ -18,12 +18,12 @@ return {
         })
         which_key.add({
             mode = 'i',
-            { '<C-d>', '<Plug>(copilot-dismiss)', desc = 'Dismiss suggestion' },
-            { '<C-s>', '<Plug>(copilot-next)', desc = 'Next suggestion' },
-            { '<C-b>', '<Plug>(copilot-previous)', desc = 'Previous suggestion' },
-            { '<C-l>', '<Plug>(copilot-accept-line)', desc = 'Accept next line suggestion' },
+            { '<C-x>', '<Plug>(copilot-dismiss)', desc = 'Dismiss suggestion' },
+            { '<C-\'>', '<Plug>(copilot-next)', desc = 'Next suggestion' },
+            { '<C-;>', '<Plug>(copilot-previous)', desc = 'Previous suggestion' },
+            { '<C-y>', '<Plug>(copilot-accept-line)', desc = 'Accept next line suggestion' },
             { '<C-w>', '<Plug>(copilot-accept-word)', desc = 'Accept next word suggestion' },
-            { '<C-y>', function() vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](), 'i', true) end, desc = 'Accept next word suggestion' },
+            { '<C-e>', function() vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](), 'i', true) end, desc = 'Accept next word suggestion' },
         })
     end,
 }

@@ -59,6 +59,15 @@ return {
                 { '<leader>ll', ':Lazy<cr>', desc = 'Lazy (Open)', icon = '󰀻' },
                 { '<leader>T', ':terminal<cr>', desc = 'Terminal (Open)', icon = '' },
             },
+            {
+                mode = { 'v' },
+                -- Text edit
+                { 'J', ':m \'>+1<CR>gv=gv', desc = 'Move selected line up', icon = '' },
+                { 'K', ':m \'<-2<CR>gv=gv', desc = 'Move selected line down', icon = '' },
+                { '<leader>y', '"+y', desc = 'Copy to system clipboard', icon = '' },
+                { '<leader>Y', '"+y$', desc = 'Copy till the end of the line to system clipboard', icon = '' },
+                { '<leader>p', '"+p', desc = 'Paste from system clipboard', icon = '' },
+            }
         })
         which_key.add({
             -- Set filetype
@@ -71,13 +80,8 @@ return {
             { '<leader>Fq', ':set filetype=sql<cr>', desc = 'SQL', icon = '' },
             { '<leader>Fs', ':set filetype=sh<cr>', desc = 'Shell', icon = '' },
             { '<leader>Ft', ':set filetype=typescript<cr>', desc = 'TypeScript', icon = '' },
+            { '<leader>Fy', ':set filetype=yaml<cr>', desc = 'YAML', icon = '󰒋' },
             { '<leader>Fv', ':set filetype=javascript<cr>', desc = 'JavaScript', icon = '' },
-        })
-        which_key.add({
-            mode = { 'v' },
-            -- Text edit
-            { 'J', ':m \'>+1<CR>gv=gv', desc = 'Move selected line up', icon = '' },
-            { 'K', ':m \'<-2<CR>gv=gv', desc = 'Move selected line down', icon = '' },
         })
     end,
 }

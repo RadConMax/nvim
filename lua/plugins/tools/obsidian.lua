@@ -101,18 +101,6 @@ return {
         })
 
         which_key.add({
-            {
-                { '<leader>m', desc = 'Markdown', icon = '' },
-                {
-                    '<leader>mm',
-                    function()
-                        vim.cmd('ObsidianWorkspace current')
-                        vim.cmd('ObsidianQuickSwitch')
-                    end,
-                    desc = 'Current Markdown Files',
-                    icon = '',
-                },
-            },
             { '<leader>o', desc = 'Obsidian', icon = '' },
             { '<leader>oa', ':ObsidianOpen ', desc = 'Open in app' },
             { '<leader>ob', ':ObsidianBacklinks <cr>', desc = 'Back links' },

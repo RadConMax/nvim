@@ -35,11 +35,15 @@ vim.o.foldenable = true
 vim.opt.conceallevel = 2
 
 -- General settings
-vim.opt.spell = true
-vim.opt.spelllang = { 'en_us' }
+-- vim.opt.spell = true
+-- vim.opt.spelllang = { 'en_us' }
 vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
-vim.opt.isfname:append('@-@')
-vim.opt.updatetime = 50
+vim.opt.isfname:append('@')
+
+-- Swap file settings
+vim.opt.swapfile = true                    -- Enable swap files
+vim.opt.directory = vim.fn.stdpath('state') .. '/swap//'  -- Set swap file directory
+vim.opt.updatecount = 200                  -- Write swap after 200 characters typed
 
 -- Copilot
 vim.g.node_host_prog = '~/.nvm/versions/node/v23.11.1/lib/node_modules'
