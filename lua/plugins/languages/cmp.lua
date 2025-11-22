@@ -69,8 +69,8 @@ return {
                 }),
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-n>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                ['<C-p>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
                 ['<C-Space>'] = cmp.mapping.complete(),
@@ -82,12 +82,12 @@ return {
                     }),
                     { 'i', 'c', }
                 ),
-                ['<C-N>'] = cmp.mapping(function()
+                ['<C-l>'] = cmp.mapping(function()
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     end
                 end, { 'i', 's', }),
-                ['<C-P>'] = cmp.mapping(function()
+                ['<C-h>'] = cmp.mapping(function()
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     end
