@@ -13,7 +13,8 @@ return {
 
         obsidian.setup({
             attachments = {
-                img_folder = markdown_images_path,
+                img_folder = markdown_images_path or 'attachments',
+                confirm_img_paste = false,
                 img_name_func = function()
                     return string.format('%s-', os.time())
                 end,
@@ -32,28 +33,15 @@ return {
             workspaces = {
                 {
                     name = 'current',
-                    path = function()
-                        return assert(vim.fn.getcwd())
-                    end,
-                    overrides = {
-                        notes_subdir = vim.NIL,
-                        new_notes_location = 'current_dir',
-                        templates = {
-                            subdir = vim.NIL,
-                        },
-                        disable_frontmatter = true,
-                        daily_notes = {
-                            folder = '',
-                        },
-                    },
+                    path = function() return assert(vim.fn.getcwd()) end,
                 },
                 {
                     name = 'personal',
-                    path = (personal_vault_path == nil and '~') or personal_vault_path,
+                    path = (personal_vault_path == nil and '~') or personal_vault_path or './personal_vault',
                 },
                 {
                     name = 'work',
-                    path = (work_vault_path == nil and '~') or work_vault_path,
+                    path = (work_vault_path == nil and '~') or work_vault_path or './work_vault',
                 },
             },
             daily_notes = {
@@ -93,9 +81,13 @@ return {
             end,
             picker = {
                 name = 'telescope.nvim',
-                mappings = {
-                    new = '<c-x>',
-                    insert_link = '<c-l>',
+                note_mappings = {
+                    new = '<C-x>',
+                    insert_link = '<C-l>',
+                },
+                tag_mappings = {
+                    tag_note = '<C-x>',
+                    insert_tag = '<C-l>',
                 },
             },
         })

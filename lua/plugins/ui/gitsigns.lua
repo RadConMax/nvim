@@ -1,35 +1,37 @@
 return {
     'lewis6991/gitsigns.nvim',
-    lazy = true,
-    init = function()
-        local which_key = require('which-key')
-
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
         require('gitsigns').setup({
             current_line_blame_opts = {
                 virt_text_pos = 'right_align',
             },
             on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns
+                local which_key = require('which-key')
 
                 -- Navigations
                 which_key.add({
                     buffer = bufnr,
-                    expr = true,
                     {
                         ']h',
                         function()
-                            if vim.wo.diff then return ']c' end
-                            vim.schedule(function() gs.next_hunk() end)
-                            return '<Ignore>'
+                            if vim.wo.diff then
+                                vim.api.nvim_feedkeys(']c', 'n', true)
+                            else
+                                gs.next_hunk()
+                            end
                         end,
                         desc = 'Next hunk',
                     },
                     {
                         '[h',
                         function()
-                            if vim.wo.diff then return '[c' end
-                            vim.schedule(function() gs.prev_hunk() end)
-                            return '<Ignore>'
+                            if vim.wo.diff then
+                                vim.api.nvim_feedkeys('[c', 'n', true)
+                            else
+                                gs.prev_hunk()
+                            end
                         end,
                         desc = 'Previous hunk',
                     },
@@ -53,15 +55,15 @@ return {
                 which_key.add({
                     buffer = bufnr,
                     mode = 'v',
-                    { '<leader>s', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'Stage hunk' },
-                    { '<leader>r', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'Reset hunk' },
+                    { '<leader>gs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'Stage hunk' },
+                    { '<leader>gr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, desc = 'Reset hunk' },
                 })
 
                 -- Text object
                 which_key.add({
                     buffer = bufnr,
                     mode = { 'o', 'x' },
-                    { 'ih', ':<C-U>Gitsigns select_hunk<CR>', desc = 'Stage hunk' },
+                    { 'ih', ':<C-U>Gitsigns select_hunk<CR>', desc = 'Git hunk' },
                 })
             end,
         })
