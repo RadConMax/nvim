@@ -24,7 +24,8 @@ return {
                 theme = theme,
             },
             sections = {
-                lualine_a = { 'filetype', 'copilot' },
+                -- lualine_a = { 'filetype', 'copilot' },
+                lualine_a = { 'filetype' },
                 lualine_b = { 'encoding' },
                 lualine_c = { filename },
                 lualine_x = { diagnostics },

@@ -10,6 +10,11 @@ return {
         local which_key = require('which-key')
 
         noice.setup({
+            cmdline = {
+                format = {
+                    cmdline = false,
+                },
+            },
             lsp = {
                 hover = {
                     opts = {

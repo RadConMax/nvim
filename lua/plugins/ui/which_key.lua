@@ -53,6 +53,13 @@ return {
                 { '[q', ':cp<cr>', desc = 'Previous quickfix item', icon = '' },
                 { ']q', ':cn<cr>', desc = 'Next quickfix item', icon = '' },
                 { 'n', 'nzzzv', desc = 'Search previous but keep cursor centered', icon = '' },
+                -- Tabs
+                { '<leader>T', desc = 'Tabs', icon = '󰓩' },
+                { '<leader>Tn', ':tabnew<cr>', desc = 'New tab', icon = '+󰓩' },
+                { '<leader>Ts', ':tab split<cr>', desc = 'Curent buffer in new tab', icon = ' +󰓩' },
+                { '<leader>Tc', ':closetab', desc = 'Close current tab', icon = '-󰓩' },
+                { '<leader>Tn', ':+tabnext', desc = 'Next tab', icon = ' 󰓩' },
+                { '<leader>Tp', ':-tabnext', desc = 'Previous tab', icon = ' 󰓩' },
             },
             {
                 -- Tools
