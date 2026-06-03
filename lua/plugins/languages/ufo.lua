@@ -2,7 +2,7 @@ return {
     'kevinhwang91/nvim-ufo',
     dependencies = { 'kevinhwang91/promise-async' },
     event = 'VeryLazy',
-    run = ':TSUpdate',
+
     config = function()
         local ufo = require('ufo')
         local which_key = require('which-key')

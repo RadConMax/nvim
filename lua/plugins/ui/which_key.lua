@@ -2,9 +2,7 @@ return {
     'folke/which-key.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'VeryLazy',
-    lazy = true,
     init = function()
-        vim.o.timeout = true
         vim.o.timeoutlen = 300
     end,
     config = function()
@@ -49,22 +47,22 @@ return {
                 { '<leader>vv', ':vsplit<cr>', desc = 'Vertical split', icon = '' },
                 { '<leader>VV', 'ggVG', desc = 'Select all', icon = '󰒆' },
                 { '<leader>ww', ':windo diffthis<cr>', desc = 'Diff', icon = '' },
-                { '<Esc>', ':noh<cr>', desc = 'Close highlights', icon = '󱎘' },
+                { '<Esc>', '<cmd>noh<cr><Esc>', desc = 'Close highlights', icon = '󱎘' },
                 { '[q', ':cp<cr>', desc = 'Previous quickfix item', icon = '' },
                 { ']q', ':cn<cr>', desc = 'Next quickfix item', icon = '' },
                 { 'n', 'nzzzv', desc = 'Search previous but keep cursor centered', icon = '' },
                 -- Tabs
                 { '<leader>T', desc = 'Tabs', icon = '󰓩' },
                 { '<leader>Tn', ':tabnew<cr>', desc = 'New tab', icon = '+󰓩' },
-                { '<leader>Ts', ':tab split<cr>', desc = 'Curent buffer in new tab', icon = ' +󰓩' },
-                { '<leader>Tc', ':closetab', desc = 'Close current tab', icon = '-󰓩' },
-                { '<leader>Tn', ':+tabnext', desc = 'Next tab', icon = ' 󰓩' },
-                { '<leader>Tp', ':-tabnext', desc = 'Previous tab', icon = ' 󰓩' },
+                { '<leader>Ts', ':tab split<cr>', desc = 'Current buffer in new tab', icon = ' +󰓩' },
+                { '<leader>Tc', ':tabclose<cr>', desc = 'Close current tab', icon = '-󰓩' },
+                { '<leader>T]', ':+tabnext<cr>', desc = 'Next tab', icon = ' 󰓩' },
+                { '<leader>T[', ':-tabnext<cr>', desc = 'Previous tab', icon = ' 󰓩' },
             },
             {
                 -- Tools
                 { '<leader>ll', ':Lazy<cr>', desc = 'Lazy (Open)', icon = '󰀻' },
-                { '<leader>T', ':terminal<cr>', desc = 'Terminal (Open)', icon = '' },
+                { '<leader>Tt', ':terminal<cr>', desc = 'Terminal (Open)', icon = '' },
             },
             {
                 mode = { 'v' },

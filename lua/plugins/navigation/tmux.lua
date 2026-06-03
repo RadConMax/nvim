@@ -1,13 +1,7 @@
 return {
     "christoomey/vim-tmux-navigator",
-    cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-    },
-    init = function()
+    lazy = false,
+    config = function()
         local which_key = require('which-key')
 
         which_key.add({

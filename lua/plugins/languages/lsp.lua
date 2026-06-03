@@ -8,8 +8,7 @@ return {
     config = function()
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
         local which_key = require('which-key')
-        local base_on_attach = vim.lsp.config.eslint.on_attach
-        local on_attach = function(_, bufnr)
+        local on_attach = function(client, bufnr)
             which_key.add({
                 buffer = bufnr,
                 noremap = true,
@@ -17,7 +16,7 @@ return {
                 { '<leader><c-k>', vim.lsp.buf.signature_help, desc = 'Signature help' },
                 {
                     { 'd', desc = 'Diagnostics', icon = '󰈙' },
-                    { 'dd', vim.diagnostic.open, desc = 'Open diagnostic' },
+                    { 'dc', vim.diagnostic.setqflist, desc = 'Send diagnostics to quickfix' },
                     { 'df', vim.diagnostic.open_float, desc = 'Open float diagnostic' },
                     { 'dl', ':Telescope diagnostics bufnr=0<cr>', desc = 'Find buffer diagnostics' },
                     { 'dL', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
@@ -42,7 +41,7 @@ return {
                     { '<leader>l', desc = 'LSP', icon = '' },
                     { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
                     { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'Format file' },
-                    { '<leader>ln', ':EslintFixAll', desc = 'Eslint file' },
+                    { '<leader>ln', ':EslintFixAll<cr>', desc = 'Eslint file' },
                     { '<leader>lr', vim.lsp.buf.rename, desc = 'Smart rename' },
                     { '<leader>lt', ':LspRestart<cr>', desc = 'Restart LSP' },
                 },
@@ -79,13 +78,7 @@ return {
         vim.lsp.config('emmet_ls', { capabilities = capabilities, on_attach = on_attach })
         vim.lsp.config('eslint', {
             capabilities = capabilities,
-            on_attach = function(client, bufnr)
-                if base_on_attach then
-                    base_on_attach(client, bufnr)
-                end
-
-                on_attach(client, bufnr)
-            end,
+            on_attach = on_attach,
         })
         vim.lsp.config('helm_ls', { capabilities = capabilities, on_attach = on_attach })
         vim.lsp.config('html', { capabilities = capabilities, on_attach = on_attach })

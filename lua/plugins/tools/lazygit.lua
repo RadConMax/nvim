@@ -1,8 +1,9 @@
 return {
     'kdheepak/lazygit.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    lazy = true,
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    lazy = false,
     config = function()
+        require('telescope').load_extension('lazygit')
         local which_key = require('which-key')
 
         which_key.add({

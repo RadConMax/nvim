@@ -7,7 +7,7 @@ return {
     config = function()
         local lualine = require('lualine')
         local noice = require('noice')
-        local theme = require('lualine.themes.dracula')
+        local theme = 'auto'
 
         -- Sections
         local diagnostics = { 'diagnostics', sources = { 'nvim_lsp' }, sections = { 'error', 'warn', 'info', 'hint' } }

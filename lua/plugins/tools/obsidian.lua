@@ -2,7 +2,6 @@ return {
     'obsidian-nvim/obsidian.nvim',
     version = '*',
     ft = 'markdown',
-    lazy = false,
     config = function()
         local obsidian = require('obsidian')
         local which_key = require('which-key')
@@ -65,7 +64,7 @@ return {
 
         -- Note commands
         which_key.add({
-            { '<leader>or',  ':Obsidian backlinks<cr>',       desc = 'Back links' },
+            { '<leader>ob',  ':Obsidian backlinks<cr>',       desc = 'Back links' },
             { '<leader>of',  ':Obsidian follow_link<cr>',     desc = 'Follow link' },
             { '<leader>oc',  ':Obsidian toc<cr>',             desc = 'Table of contents' },
             { '<leader>oTT', ':Obsidian template ',           desc = 'Template' },

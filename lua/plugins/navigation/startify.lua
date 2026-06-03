@@ -1,13 +1,15 @@
 return {
     'mhinz/vim-startify',
-    init = function()
+    dependencies = { 'folke/which-key.nvim' },
+    config = function()
         vim.g.ascii = {
-            '__________             .____________                    _____                 ',
-            '\\______   \\_____     __| _/\\_   ___ \\  ____   ____     /     \\ _____  ___  ___',
-            ' |       _/\\__  \\   / __ | /    \\  \\/ /  _ \\ /    \\   /  \\ /  \\\\__  \\ \\  \\/  /',
-            ' |    |   \\ / __ \\_/ /_/ | \\     \\___(  <_> )   |  \\ /    Y    \\/ __ \\_>    < ',
-            ' |____|_  /(____  /\\____ |  \\______  /\\____/|___|  / \\____|__  (____  /__/\\_ \\',
-            '        \\/      \\/      \\/         \\/            \\/          \\/     \\/      \\/ ',
+            ' _______             ____   ____.__         ',
+            ' ╲      ╲   ____  ___╲   ╲ ╱   ╱│__│ _____  ',
+            ' ╱   │   ╲_╱ __ ╲╱  _ ╲   Y   ╱ │  │╱     ╲ ',
+            '╱    │    ╲  ___(  <_> )     ╱  │  │  Y Y  ╲',
+            '╲____│__  ╱╲___  >____╱ ╲___╱   │__│__│_│  ╱',
+            ' ╲╱     ╲╱                               ╲╱ ',
+            '                                            ',
         }
         vim.g.startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\\" \\".v:val")'
         vim.g.startify_lists = {
@@ -18,9 +20,9 @@ return {
             { type = 'commands', header = { '   Commands' } },
         }
 
-        local wich_key = require('which-key')
+        local which_key = require('which-key')
 
-        wich_key.add({
+        which_key.add({
             { '<leader>S', desc = 'Session', icon = '' },
             { '<leader>SC', ':SClose<cr>', desc = 'Close session', icon = '󰅖' },
             { '<leader>SD', ':SDelete<cr>', desc = 'Delete session', icon = '󰆴' },

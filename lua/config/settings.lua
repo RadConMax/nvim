@@ -46,18 +46,12 @@ vim.opt.directory = vim.fn.stdpath('state') .. '/swap//'  -- Set swap file direc
 vim.opt.updatecount = 200                  -- Write swap after 200 characters typed
 
 -- Copilot
-vim.g.node_host_prog = '~/.nvm/versions/node/v23.11.1/lib/node_modules'
-vim.g.copilot_node_command = '~/.nvm/versions/node/v23.11.1/bin/node'
+vim.g.copilot_node_command = vim.fn.expand('~/.nvm/alias/default/bin/node')
 
 -- Helm files
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'mustache' },
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
+    pattern = { '*.tpl', '*/templates/*.yaml', '*/templates/*.yml' },
     callback = function()
-        if vim.fn.expand('%:e') == 'tpl' then
-            vim.bo.filetype = 'helm'
-        end
-        if vim.fn.expand('%:e') == 'yaml' then
-            vim.bo.filetype = 'helm'
-        end
+        vim.bo.filetype = 'helm'
     end,
 })
