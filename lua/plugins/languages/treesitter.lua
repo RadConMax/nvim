@@ -3,5 +3,4 @@ return {
     lazy = false,
     branch = 'main',
     build = ':TSUpdate',
-    install_dir = vim.fn.stdpath('data') .. '/site',
 }

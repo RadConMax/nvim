@@ -5,7 +5,6 @@ return {
     dependencies = {
         { 'hrsh7th/cmp-buffer' }, -- nvim-cmp source for buffer words
         { 'hrsh7th/cmp-path' }, -- nvim-cmp source for filesystem paths
-        { 'hrsh7th/cmp-nvim-lua' }, -- nvim-cmp source for neovim Lua API
         { 'chrisgrieser/cmp-nerdfont' }, -- nvim-cmp source for nerdfont icons (triggered by :)
         {
             'L3MON4D3/LuaSnip',
@@ -31,7 +30,6 @@ return {
             opts = {
                 library = {
                     { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-                    { path = 'lazy.nvim', words = { 'LazyVim' } },
                 },
             },
         },
@@ -96,7 +94,6 @@ return {
                 { name = 'lazydev', priority = 100, group_index = 0 },
                 { name = 'luasnip', priority = 40 },
                 { name = 'nvim_lsp', priority = 35 },
-                { name = 'nvim_lua', priority = 30 },
                 { name = 'buffer', priority = 20 },
                 { name = 'path', priority = 10 },
                 { name = 'nerdfont', priority = 5 },

@@ -1,10 +1,14 @@
 return {
     'williamboman/mason.nvim',
-    dependencies = { 'williamboman/mason-lspconfig.nvim' }, -- Bridges mason.nvim with the lspconfig plugin
+    dependencies = {
+        'williamboman/mason-lspconfig.nvim',
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+    },
     lazy = false,
     config = function()
         local mason = require('mason')
         local mason_lspconfig = require('mason-lspconfig')
+        local mason_tool_installer = require('mason-tool-installer')
         local which_key = require('which-key')
 
         mason.setup({
@@ -34,6 +38,14 @@ return {
                 'yamlls',
             },
             automatic_installation = true,
+        })
+
+        mason_tool_installer.setup({
+            ensure_installed = {
+                'prettier',
+                'stylua',
+                'shfmt',
+            },
         })
 
         which_key.add({

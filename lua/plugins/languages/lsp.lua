@@ -8,60 +8,63 @@ return {
     config = function()
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
         local which_key = require('which-key')
-        local on_attach = function(client, bufnr)
-            which_key.add({
-                buffer = bufnr,
-                noremap = true,
-                hidden = true,
-                { '<leader><c-k>', vim.lsp.buf.signature_help, desc = 'Signature help' },
-                {
-                    { 'd', desc = 'Diagnostics', icon = '󰈙' },
-                    { 'dc', vim.diagnostic.setqflist, desc = 'Send diagnostics to quickfix' },
-                    { 'df', vim.diagnostic.open_float, desc = 'Open float diagnostic' },
-                    { 'dl', ':Telescope diagnostics bufnr=0<cr>', desc = 'Find buffer diagnostics' },
-                    { 'dL', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
-                    { 'dp', function() vim.diagnostic.jump({ count = -1 }) end, desc = 'Go to previous diagnostic' },
-                    { 'dn', function() vim.diagnostic.jump({ count = 1 }) end, desc = 'Go to next diagnostic' },
-                },
-                {
-                    { 'g', desc = 'Go to', icon = '' },
-                    { 'gr', ':Telescope lsp_references show_line=false<cr>', desc = 'Go to LSP references' },
-                    { 'gD', vim.lsp.buf.declaration, desc = 'Go to declaration' },
-                    { 'gd', ':Telescope lsp_definitions<cr>', desc = 'Go to LSP definitions' },
-                    { 'gi', ':Telescope lsp_implementations<cr>', desc = 'Go to LSP implementations' },
-                    { 'gI', ':LspInfo<cr>', desc = 'Go to LSP information' },
-                    { 'gt', ':Telescope lsp_type_definitions<cr>', desc = 'Go to LSP type definitions' },
-                    { 'K', vim.lsp.buf.hover, desc = 'Show documentation for what is under cursor' },
-                },
-            })
-            which_key.add({
-                buffer = bufnr,
-                noremap = true,
-                {
-                    { '<leader>l', desc = 'LSP', icon = '' },
-                    { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
-                    { '<leader>lf', function() vim.lsp.buf.format({ async = true }) end, desc = 'Format file' },
-                    { '<leader>ln', ':EslintFixAll<cr>', desc = 'Eslint file' },
-                    { '<leader>lr', vim.lsp.buf.rename, desc = 'Smart rename' },
-                    { '<leader>lt', ':LspRestart<cr>', desc = 'Restart LSP' },
-                },
-                {
-                    { '<leader>w', desc = 'Workspace', icon = '󰥟' },
-                    { '<leader>wa', vim.lsp.buf.add_workspace_folder, desc = 'Add workspace folder' },
-                    { '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = 'List workspaces folders' },
-                    { '<leader>wr', vim.lsp.buf.remove_workspace_folder, desc = 'Remove workspace folder' },
-                },
-            })
-            which_key.add({
-                buffer = bufnr,
-                noremap = true,
-                mode = 'v',
-                {
-                    { '<leader>l', desc = 'LSP' },
-                    { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
-                },
-            })
-        end
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            callback = function(ev)
+                local bufnr = ev.buf
+                which_key.add({
+                    buffer = bufnr,
+                    noremap = true,
+                    hidden = true,
+                    { '<leader><c-k>', vim.lsp.buf.signature_help, desc = 'Signature help' },
+                    {
+                        { 'd', desc = 'Diagnostics', icon = '󰈙' },
+                        { 'dc', vim.diagnostic.setqflist, desc = 'Send diagnostics to quickfix' },
+                        { 'df', vim.diagnostic.open_float, desc = 'Open float diagnostic' },
+                        { 'dl', ':Telescope diagnostics bufnr=0<cr>', desc = 'Find buffer diagnostics' },
+                        { 'dL', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
+                        { 'dp', function() vim.diagnostic.jump({ count = -1 }) end, desc = 'Go to previous diagnostic' },
+                        { 'dn', function() vim.diagnostic.jump({ count = 1 }) end, desc = 'Go to next diagnostic' },
+                    },
+                    {
+                        { 'g', desc = 'Go to', icon = '' },
+                        { 'gr', ':Telescope lsp_references show_line=false<cr>', desc = 'Go to LSP references' },
+                        { 'gD', vim.lsp.buf.declaration, desc = 'Go to declaration' },
+                        { 'gd', ':Telescope lsp_definitions<cr>', desc = 'Go to LSP definitions' },
+                        { 'gi', ':Telescope lsp_implementations<cr>', desc = 'Go to LSP implementations' },
+                        { 'gI', ':LspInfo<cr>', desc = 'Go to LSP information' },
+                        { 'gt', ':Telescope lsp_type_definitions<cr>', desc = 'Go to LSP type definitions' },
+                        { 'K', vim.lsp.buf.hover, desc = 'Show documentation for what is under cursor' },
+                    },
+                })
+                which_key.add({
+                    buffer = bufnr,
+                    noremap = true,
+                    {
+                        { '<leader>l', desc = 'LSP', icon = '' },
+                        { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
+                        { '<leader>ln', ':EslintFixAll<cr>', desc = 'Eslint file' },
+                        { '<leader>lr', vim.lsp.buf.rename, desc = 'Smart rename' },
+                        { '<leader>lt', ':LspRestart<cr>', desc = 'Restart LSP' },
+                    },
+                    {
+                        { '<leader>w', desc = 'Workspace', icon = '󰥟' },
+                        { '<leader>wa', vim.lsp.buf.add_workspace_folder, desc = 'Add workspace folder' },
+                        { '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = 'List workspaces folders' },
+                        { '<leader>wr', vim.lsp.buf.remove_workspace_folder, desc = 'Remove workspace folder' },
+                    },
+                })
+                which_key.add({
+                    buffer = bufnr,
+                    noremap = true,
+                    mode = 'v',
+                    {
+                        { '<leader>l', desc = 'LSP' },
+                        { '<leader>lc', vim.lsp.buf.code_action, desc = 'Code actions' },
+                    },
+                })
+            end,
+        })
 
         local severity = vim.diagnostic.severity
 
@@ -73,16 +76,13 @@ return {
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        vim.lsp.config('bashls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('cssls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('emmet_ls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('eslint', {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-        vim.lsp.config('helm_ls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('html', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('jsonls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('bashls', { capabilities = capabilities })
+        vim.lsp.config('cssls', { capabilities = capabilities })
+        vim.lsp.config('emmet_ls', { capabilities = capabilities })
+        vim.lsp.config('eslint', { capabilities = capabilities })
+        vim.lsp.config('helm_ls', { capabilities = capabilities })
+        vim.lsp.config('html', { capabilities = capabilities })
+        vim.lsp.config('jsonls', { capabilities = capabilities })
         vim.lsp.config('lua_ls', {
             capabilities = capabilities,
             on_init = function(client)
@@ -108,9 +108,6 @@ return {
                         checkThirdParty = false,
                         library = {
                             vim.env.VIMRUNTIME,
-                            -- Depending on the usage, you might want to add additional paths here.
-                            -- '${3rd}/luv/library',
-                            -- '${3rd}/busted/library',
                         }
                     },
                     telemetry = {
@@ -118,14 +115,13 @@ return {
                     },
                 })
             end,
-            on_attach = on_attach,
             settings = {
                 Lua = { },
             },
         })
-        vim.lsp.config('marksman', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('sqlls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('ts_ls', { capabilities = capabilities, on_attach = on_attach })
-        vim.lsp.config('yamlls', { capabilities = capabilities, on_attach = on_attach })
+        vim.lsp.config('marksman', { capabilities = capabilities })
+        vim.lsp.config('sqlls', { capabilities = capabilities })
+        vim.lsp.config('ts_ls', { capabilities = capabilities })
+        vim.lsp.config('yamlls', { capabilities = capabilities })
     end,
 }
