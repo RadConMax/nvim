@@ -46,7 +46,7 @@ return {
                 { '<leader>xx', ':x<cr>', desc = 'Save and close (if modified)', icon = ' 󱎘' },
                 { '<leader>vv', ':vsplit<cr>', desc = 'Vertical split', icon = '' },
                 { '<leader>VV', 'ggVG', desc = 'Select all', icon = '󰒆' },
-                { '<leader>ww', ':windo diffthis<cr>', desc = 'Diff', icon = '' },
+                { '<leader>DD', ':windo diffthis<cr>', desc = 'Diff', hidden = true, icon = '' },
                 { '<Esc>', '<cmd>noh<cr><Esc>', desc = 'Close highlights', icon = '󱎘' },
                 { '[q', ':cp<cr>', desc = 'Previous quickfix item', icon = '' },
                 { ']q', ':cn<cr>', desc = 'Next quickfix item', icon = '' },
@@ -62,7 +62,6 @@ return {
             {
                 -- Tools
                 { '<leader>ll', ':Lazy<cr>', desc = 'Lazy (Open)', icon = '󰀻' },
-                { '<leader>Tt', ':terminal<cr>', desc = 'Terminal (Open)', icon = '' },
             },
             {
                 mode = { 'v' },
