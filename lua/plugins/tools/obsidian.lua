@@ -44,7 +44,7 @@ return {
                 { '<leader>odt', ':Obsidian today<cr>',         desc = 'Today\'s note' },
                 { '<leader>odm', ':Obsidian dailies -30 0<cr>', desc = 'Last month notes' },
                 { '<leader>odn', ':Obsidian tomorrow<cr>',      desc = 'Tomorrow\'s note' },
-                { '<leader>odw', ':Obsidian dailies -7 0<cr>',  desc = 'Last week\' notes' },
+                { '<leader>odw', ':Obsidian dailies -7 0<cr>',  desc = 'Last week\'s notes' },
                 { '<leader>ody', ':Obsidian yesterday<cr>',     desc = 'Yesterday\'s note' },
             },
             { '<leader>oh', ':Obsidian help<cr>', desc = 'Help', icon = '' },

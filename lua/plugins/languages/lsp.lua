@@ -9,6 +9,10 @@ return {
         local cmp_nvim_lsp = require('cmp_nvim_lsp')
         local which_key = require('which-key')
 
+        which_key.add({
+            { '<leader>l', desc = 'LSP', icon = '' },
+        })
+
         vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(ev)
                 local bufnr = ev.buf

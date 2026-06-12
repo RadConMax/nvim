@@ -7,13 +7,13 @@ return {
         local which_key = require('which-key')
 
         which_key.add({
-            { '<leader>c', desc = 'Copilot', icon  = '󰚩' },
-            { '<leader>cD', ':Copilot disable<cr>', desc = 'Disable Copilot', icon = '󱚧'},
-            { '<leader>cE', ':Copilot enable<cr>', desc = 'Enable Copilot', icon = '󱚣' },
-            { '<leader>cO', ':Copilot signout<cr>', desc = 'Sign out of Copilot', icon = '󱙺' },
-            { '<leader>cP', ':Copilot panel<cr>', desc = 'Open Copilot panel', icon = '󰛾' },
-            { '<leader>cS', ':Copilot setup<cr>', desc = 'Setup Copilot', icon = '' },
-            { '<leader>cV', ':Copilot version<cr>', desc = 'Show Copilot version', icon = '' },
+            { '<leader>C', desc = 'Copilot', icon  = '󰚩' },
+            { '<leader>CD', ':Copilot disable<cr>', desc = 'Disable Copilot', icon = '󱚧'},
+            { '<leader>CE', ':Copilot enable<cr>', desc = 'Enable Copilot', icon = '󱚣' },
+            { '<leader>CO', ':Copilot signout<cr>', desc = 'Sign out of Copilot', icon = '󱙺' },
+            { '<leader>CP', ':Copilot panel<cr>', desc = 'Open Copilot panel', icon = '󰛾' },
+            { '<leader>CS', ':Copilot setup<cr>', desc = 'Setup Copilot', icon = '' },
+            { '<leader>CV', ':Copilot version<cr>', desc = 'Show Copilot version', icon = '' },
         })
         which_key.add({
             mode = 'i',

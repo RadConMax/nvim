@@ -27,7 +27,6 @@ return {
         })
 
         which_key.add({
-            { '<leader>l', desc = 'LSP', icon = '' },
             { '<leader>lf', function() conform.format({ async = true, lsp_format = 'fallback' }) end, desc = 'Format file' },
         })
     end,

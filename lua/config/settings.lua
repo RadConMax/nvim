@@ -45,8 +45,22 @@ vim.opt.swapfile = true                    -- Enable swap files
 vim.opt.directory = vim.fn.stdpath('state') .. '/swap//'  -- Set swap file directory
 vim.opt.updatecount = 200                  -- Write swap after 200 characters typed
 
--- Copilot
-vim.g.copilot_node_command = vim.fn.expand('~/.nvm/alias/default/bin/node')
+-- nvm node (needed by Mason and Copilot)
+local nvm_dir = vim.fn.expand('~/.nvm')
+local nvm_alias_file = nvm_dir .. '/alias/default'
+if vim.fn.isdirectory(nvm_dir) == 1 and vim.fn.filereadable(nvm_alias_file) == 1 then
+    local nvm_default = vim.fn.readfile(nvm_alias_file)[1]
+    if nvm_default and vim.fn.filereadable(nvm_dir .. '/alias/' .. nvm_default) == 1 then
+        nvm_default = vim.fn.readfile(nvm_dir .. '/alias/' .. nvm_default)[1]
+    end
+    if nvm_default then
+        local nvm_node_bin = nvm_dir .. '/versions/node/' .. nvm_default .. '/bin'
+        if vim.fn.isdirectory(nvm_node_bin) == 1 then
+            vim.env.PATH = nvm_node_bin .. ':' .. vim.env.PATH
+            vim.g.copilot_node_command = nvm_node_bin .. '/node'
+        end
+    end
+end
 
 -- Helm files
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {

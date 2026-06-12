@@ -3,7 +3,7 @@ return {
     ft = { 'markdown' },
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter' },
-        { 'nvim-tree/nvim-web-devicons' },
+        { 'echasnovski/mini.icons' },
         {
             'iamcco/markdown-preview.nvim',
             cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
